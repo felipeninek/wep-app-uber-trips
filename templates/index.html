@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Mapa Interativo</title>
+</head>
+<body>
+    <h1>Mapa Interativo</h1>
+    <div>
+        <a href="{{ url_for('serve_static', filename='mapa_origem_destino_filtrado.html') }}" target="_blank">
+            <img src="{{ url_for('serve_static', filename='mapa_origem_destino_filtrado.html') }}" alt="Mapa Interativo">
+        </a>
+    </div>
+    <div>
+        <a href="{{ url_for('serve_static', filename='main.exe') }}" download>
+            <button type="button">Baixar Executável</button>
+        </a>
+    </div>
+</body>
+</html>

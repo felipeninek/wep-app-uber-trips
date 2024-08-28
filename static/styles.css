@@ -1,0 +1,72 @@
+/* static/styles.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.presentation {
+    text-align: center;
+    padding: 50px;
+}
+
+.presentation img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.filters {
+    padding: 20px;
+    background-color: #f4f4f4;
+}
+
+.filters label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+.filters input,
+.filters select {
+    margin-bottom: 10px;
+    padding: 5px;
+    width: 100%;
+}
+
+.map {
+    padding: 20px;
+    height: 600px; /* Definir altura fixa para o mapa */
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}

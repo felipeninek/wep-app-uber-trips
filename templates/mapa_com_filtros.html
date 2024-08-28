@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa com Filtros</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('index') }}">Início</a></li>
+                <li><a href="{{ url_for('upload') }}">Upload CSV</a></li>
+                <li><a href="{{ url_for('mapa_com_filtros') }}">Mapa com Filtros</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="filters">
+        <form action="{{ url_for('mapa_com_filtros') }}" method="get">
+            <label for="hora_inicio">Hora Início:</label>
+            <input type="time" id="hora_inicio" name="hora_inicio">
+            
+            <label for="hora_fim">Hora Fim:</label>
+            <input type="time" id="hora_fim" name="hora_fim">
+            
+            <label for="dia_semana">Dia da Semana:</label>
+            <select id="dia_semana" name="dia_semana">
+                <option value="">Todos</option>
+                <option value="Segunda-feira">Segunda-feira</option>
+                <option value="Terça-feira">Terça-feira</option>
+                <option value="Quarta-feira">Quarta-feira</option>
+                <option value="Quinta-feira">Quinta-feira</option>
+                <option value="Sexta-feira">Sexta-feira</option>
+                <option value="Sábado">Sábado</option>
+                <option value="Domingo">Domingo</option>
+            </select>
+
+            <label for="semana_mes">Semana do Mês:</label>
+            <input type="number" id="semana_mes" name="semana_mes" min="1" max="5">
+            
+            <label for="mes_ano">Mês/Ano:</label>
+            <input type="month" id="mes_ano" name="mes_ano">
+
+            <input type="submit" value="Aplicar Filtros">
+        </form>
+    </div>
+
+    <div class="map">
+        <iframe src="{{ url_for('static', filename=mapa_com_filtros.html) }}" width="100%" height="600" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Seu Nome. Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>
