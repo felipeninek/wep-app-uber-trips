@@ -3,7 +3,7 @@ import pandas as pd
 import folium
 import os
 from pymongo import MongoClient
-import src.bd  
+from src import bd
 
 app = Flask(__name__)
 
@@ -17,10 +17,11 @@ db = client[DATABASE_NAME]
 collection = db[COLLECTION_NAME]
 
 # Carregar do MongoDB
-def carregar_dados():
-    data = list(collection.find())  
-    df = pd.DataFrame(data)  
-    df['DataHora'] = pd.to_datetime(df['DataHora'])  # Converter a coluna 'DataHora' para datetime
+def carregar_dados_MongoDB(uri, db_name, colecao):
+    client, db = bd.conectar_mongodb(uri, db_name)
+    documentos = bd.buscar_documentos(db[colecao])
+    df = pd.DataFrame(list(documentos))  # Convertendo documentos em DataFrame
+    df['DataHora'] = pd.to_datetime(df['DataHora'])
     return df
 
 # Funções de filtro
@@ -41,13 +42,17 @@ def filtrar_por_mes_ano(df, mes_ano):
 def index():
     return render_template('index.html')
 
+@app.route('/aumente_seus_ganhos')
+def aumente_seus_ganhos():
+    return render_template('aumente_seus_ganhos.html')
+
 @app.route('/mapa_com_filtros', methods=['GET', 'POST'])
 def mapa_com_filtros():
     # Carregar dados
-    df = carregar_dados()
+    df = carregar_dados_MongoDB(MONGO_URI, DATABASE_NAME, COLLECTION_NAME)
 
     # Aplicar filtros se fornecidos
-    hora_inicio = request.args.get('hora_inicio', '00:00:00')
+    hora_inicio = request.args.get('hora_inicio', '23:00:00')
     hora_fim = request.args.get('hora_fim', '23:59:59')
     dia_semana = request.args.get('dia_semana')
     semana_mes = request.args.get('semana_mes', type=int)
@@ -88,23 +93,46 @@ def mapa_com_filtros():
                 icon=folium.Icon(icon='circle', color=row['Cor'])
             ).add_to(mapa)
 
+    # Salvar o mapa em um arquivo HTML
+    mapa.save('static/mapa_com_filtros.html')
+
     return render_template('mapa_com_filtros.html', mapa_path='mapa_com_filtros.html')
 
-@app.route('/upload', methods=['GET', 'POST'])
-def upload():
+############## Testar com os dados resultantes de web-scraper-uber-trips ##################################################
+@app.route('/colabore', methods=['GET', 'POST'])
+def colabore():
     if request.method == 'POST':
-        if 'file' not in request.files:
-            return redirect(request.url)
         file = request.files['file']
-        if file.filename == '':
-            return redirect(request.url)
         if file and file.filename.endswith('.csv'):
-            # Inserir os dados processados no MongoDB
-            data = file.to_dict(orient='records')
-            collection.insert_many(data)
+            try:
+                # Ler o CSV em um DataFrame
+                df = pd.read_csv(file, sep=';', encoding='utf-8', on_bad_lines='warn')  # Usa 'warn' para exibir avisos sobre linhas problemáticas
+                
+                # Conectar ao MongoDB
+                client, db = bd.conectar_mongodb(MONGO_URI, DATABASE_NAME)
+                colecao = bd.criar_colecao(db, COLLECTION_NAME)
+                
+                # Converter o DataFrame para uma lista de dicionários
+                documentos = df.to_dict(orient='records')
+                
+                # Inserir documentos no MongoDB
+                resultado = bd.inserir_multiplos_documentos(colecao, documentos)
+                
+                # Fechar a conexão com o MongoDB
+                client.close()
+                
+                # Redirecionar após o sucesso
+                return redirect(url_for('index'))
+            except pd.errors.ParserError as e:
+                return f"Erro ao processar o arquivo CSV: {e}", 400
+            except Exception as e:
+                return f"Erro ao inserir dados no MongoDB: {e}", 500
+        else:
+            return "Formato de arquivo não suportado. Por favor, envie um arquivo CSV.", 400
 
-            return redirect(url_for('index'))
-    return render_template('upload.html')
+    return render_template('colabore.html')
+
+
 
 @app.route('/static/<path:filename>')
 def serve_static(filename):

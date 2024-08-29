@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colaborar</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('index') }}">Início</a></li>
+                <li><a href="{{ url_for('colabore') }}">Colaborar</a></li>
+                <li><a href="{{ url_for('aumente_seus_ganhos') }}">Aumente seus ganhos!</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="colabore">
+        <h1>Colabore com o Projeto</h1>
+        <p>Você pode colaborar com o projeto baixando o executável e fazendo o upload do resultado obtido. Siga as instruções abaixo:</p>
+        
+        <h2>Baixar Executável</h2>
+        <a href="{{ url_for('serve_static', filename='main.exe') }}" download>
+            <button class="black">Baixar main.exe</button>
+        </a>
+        
+        <h2>Upload de CSV</h2>
+        <form action="{{ url_for('colabore') }}" method="post" enctype="multipart/form-data">
+            <input type="file" name="file" accept=".csv">
+            <input type="submit" class="black" value="Upload">
+        </form>
+
+        <a href="{{ url_for('index') }}" class="black">Voltar para Home</a>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Projeto Uber. Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>

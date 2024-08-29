@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aumente seus Ganhos</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('index') }}" class="black">Início</a></li>
+                <li><a href="{{ url_for('colabore') }}" class="black">Colaborar</a></li>
+                <li><a href="{{ url_for('mapa_com_filtros') }}" class="black">Mapa com Filtros</a></li>
+                <li><a href="{{ url_for('aumente_seus_ganhos') }}" class="black">Aumente seus ganhos!</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="aumente-seus-ganhos">
+        <h1>Aumente seus Ganhos!</h1>
+        <p>Utilize os filtros abaixo para personalizar os dados exibidos no mapa:</p>
+
+        <!-- Adicionar o componente Streamlit aqui -->
+        <iframe src="http://localhost:8501" width="100%" height="600" frameborder="0"></iframe>
+
+        <a href="{{ url_for('index') }}" class="black">Voltar para Home</a>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Projeto Uber. Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>

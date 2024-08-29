@@ -1,72 +1,173 @@
-/* static/styles.css */
+/* Geral */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
+    color: #333;
+    background-color: #f8f9fa;
 }
 
 header {
-    background-color: #333;
-    color: #fff;
-    padding: 10px 0;
+    background-color: #111; /* Cor de fundo preta */
+    color: #fff; /* Texto branco */
+    padding: 15px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
 }
 
-nav ul {
+header nav ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
     text-align: center;
 }
 
-nav ul li {
+header nav ul li {
     display: inline;
     margin: 0 15px;
 }
 
-nav ul li a {
-    color: #fff;
+header nav ul li a {
+    color: #fff; /* Texto dos links em branco */
     text-decoration: none;
+    font-weight: bold;
 }
 
-.presentation {
-    text-align: center;
-    padding: 50px;
-}
-
-.presentation img {
-    max-width: 100%;
-    height: auto;
-    margin-bottom: 20px;
-}
-
-.filters {
-    padding: 20px;
-    background-color: #f4f4f4;
-}
-
-.filters label {
-    display: block;
-    margin: 10px 0 5px;
-}
-
-.filters input,
-.filters select {
-    margin-bottom: 10px;
-    padding: 5px;
-    width: 100%;
-}
-
-.map {
-    padding: 20px;
-    height: 600px; /* Definir altura fixa para o mapa */
+header nav ul li a:hover {
+    text-decoration: underline;
 }
 
 footer {
-    background-color: #333;
+    background-color: #111;
     color: #fff;
     text-align: center;
     padding: 10px 0;
     position: fixed;
     bottom: 0;
     width: 100%;
+}
+
+/* Estilo para .presentation */
+.presentation {
+    padding: 80px 20px 20px; /* Add padding to account for fixed header */
+    text-align: center;
+}
+
+.presentation img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Estilo para .colabore */
+.colabore {
+    padding: 80px 20px 20px; /* Add padding to account for fixed header */
+    text-align: center;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.colabore h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.colabore p {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.colabore h2 {
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+.colabore form {
+    display: inline-block;
+    text-align: left;
+}
+
+.colabore input[type="file"] {
+    margin-bottom: 10px;
+}
+
+.colabore input[type="submit"] {
+    background-color: #000; /* Cor de fundo preto */
+    color: #fff; /* Texto branco */
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+.colabore input[type="submit"]:hover {
+    background-color: #333; /* Preto escuro */
+}
+
+.colabore a {
+    display: inline-block;
+    margin-top: 20px;
+    color: #000; /* Preto */
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.colabore a:hover {
+    text-decoration: underline;
+}
+
+/* Estilo padrão para botões */
+button, input[type="submit"] {
+    background-color: #007bff; /* Cor de fundo padrão */
+    color: #fff; /* Cor do texto */
+    border: none; /* Remover borda padrão */
+    padding: 10px 20px; /* Espaçamento interno */
+    font-size: 16px; /* Tamanho da fonte */
+    cursor: pointer; /* Cursor ao passar o mouse */
+    border-radius: 5px; /* Cantos arredondados */
+    transition: background-color 0.3s; /* Transição suave de cor */
+}
+
+/* Estilo de botão preto */
+button.black, input[type="submit"].black {
+    background-color: #000; /* Cor de fundo preto */
+    color: #fff; /* Cor do texto */
+}
+
+/* Estilo de botão preto ao passar o mouse */
+button.black:hover, input[type="submit"].black:hover {
+    background-color: #333; /* Cor de fundo preto escuro */
+}
+
+/* Estilo para os links */
+a {
+    color: #007bff; /* Cor dos links padrão */
+    text-decoration: none; /* Remover sublinhado */
+}
+
+/* Estilo de link preto */
+a.black {
+    color: #000; /* Cor do texto preto */
+}
+
+/* Estilo de link preto ao passar o mouse */
+a.black:hover {
+    text-decoration: underline; /* Sublinhado ao passar o mouse */
+}
+
+/* Estilo para os formulários */
+form {
+    margin-top: 20px; /* Espaçamento superior */
+}
+
+input[type="file"] {
+    margin-top: 10px; /* Espaçamento superior */
+    padding: 10px; /* Espaçamento interno */
+    border: 1px solid #ccc; /* Borda */
+    border-radius: 5px; /* Cantos arredondados */
+    font-size: 16px; /* Tamanho da fonte */
 }
