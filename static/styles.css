@@ -5,11 +5,12 @@ body {
     padding: 0;
     color: #333;
     background-color: #f8f9fa;
+    font-size: 16px;
 }
 
 header {
-    background-color: #111; /* Cor de fundo preta */
-    color: #fff; /* Texto branco */
+    background-color: #111;
+    color: #fff;
     padding: 15px 0;
     position: fixed;
     width: 100%;
@@ -31,7 +32,7 @@ header nav ul li {
 }
 
 header nav ul li a {
-    color: #fff; /* Texto dos links em branco */
+    color: #fff;
     text-decoration: none;
     font-weight: bold;
 }
@@ -50,9 +51,8 @@ footer {
     width: 100%;
 }
 
-/* Estilo para .presentation */
 .presentation {
-    padding: 80px 20px 20px; /* Add padding to account for fixed header */
+    padding: 80px 20px 20px;
     text-align: center;
 }
 
@@ -61,9 +61,8 @@ footer {
     height: auto;
 }
 
-/* Estilo para .colabore */
 .colabore {
-    padding: 80px 20px 20px; /* Add padding to account for fixed header */
+    padding: 80px 20px 20px;
     text-align: center;
     background-color: #fff;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -95,8 +94,8 @@ footer {
 }
 
 .colabore input[type="submit"] {
-    background-color: #000; /* Cor de fundo preto */
-    color: #fff; /* Texto branco */
+    background-color: #000;
+    color: #fff;
     border: none;
     padding: 10px 20px;
     cursor: pointer;
@@ -105,13 +104,13 @@ footer {
 }
 
 .colabore input[type="submit"]:hover {
-    background-color: #333; /* Preto escuro */
+    background-color: #333;
 }
 
 .colabore a {
     display: inline-block;
     margin-top: 20px;
-    color: #000; /* Preto */
+    color: #000;
     text-decoration: none;
     font-size: 16px;
 }
@@ -120,54 +119,123 @@ footer {
     text-decoration: underline;
 }
 
-/* Estilo padrão para botões */
 button, input[type="submit"] {
-    background-color: #007bff; /* Cor de fundo padrão */
-    color: #fff; /* Cor do texto */
-    border: none; /* Remover borda padrão */
-    padding: 10px 20px; /* Espaçamento interno */
-    font-size: 16px; /* Tamanho da fonte */
-    cursor: pointer; /* Cursor ao passar o mouse */
-    border-radius: 5px; /* Cantos arredondados */
-    transition: background-color 0.3s; /* Transição suave de cor */
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
 }
 
-/* Estilo de botão preto */
 button.black, input[type="submit"].black {
-    background-color: #000; /* Cor de fundo preto */
-    color: #fff; /* Cor do texto */
+    background-color: #000;
+    color: #fff;
 }
 
-/* Estilo de botão preto ao passar o mouse */
 button.black:hover, input[type="submit"].black:hover {
-    background-color: #333; /* Cor de fundo preto escuro */
+    background-color: #333;
 }
 
-/* Estilo para os links */
 a {
-    color: #007bff; /* Cor dos links padrão */
-    text-decoration: none; /* Remover sublinhado */
+    color: #007bff;
+    text-decoration: none;
 }
 
-/* Estilo de link preto */
 a.black {
-    color: #000; /* Cor do texto preto */
+    color: #000;
 }
 
-/* Estilo de link preto ao passar o mouse */
 a.black:hover {
-    text-decoration: underline; /* Sublinhado ao passar o mouse */
+    text-decoration: underline;
 }
 
-/* Estilo para os formulários */
 form {
-    margin-top: 20px; /* Espaçamento superior */
+    margin-top: 20px;
 }
 
 input[type="file"] {
-    margin-top: 10px; /* Espaçamento superior */
-    padding: 10px; /* Espaçamento interno */
-    border: 1px solid #ccc; /* Borda */
-    border-radius: 5px; /* Cantos arredondados */
-    font-size: 16px; /* Tamanho da fonte */
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+#mapa-container {
+    display: flex;
+    justify-content: center;
+    padding-top: 0%;
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-bottom: 10%;
+}
+
+#mapa {
+    height: 100%;
+    width: 100%;
+    max-height: 500px;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.text-size-controls {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.text-size-controls button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    margin: 0 5px;
+}
+
+.text-size-controls button:hover {
+    background-color: #0056b3;
+}
+
+.accessibility-controls {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+}
+
+.accessibility-controls button {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+    margin: 0 5px;
+    transition: color 0.3s;
+}
+
+.accessibility-controls button:hover {
+    color: #007bff;
+}
+
+header nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.filtros {
+    font-size: 16px; 
+    margin: 20px 0;
+    text-align: center;
+}
+
+.filtros input,
+.filtros select {
+    font-size: inherit; 
 }

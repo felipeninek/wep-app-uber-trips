@@ -42,12 +42,8 @@ def filtrar_por_mes_ano(df, mes_ano):
 def index():
     return render_template('index.html')
 
-@app.route('/aumente_seus_ganhos')
+@app.route('/aumente_seus_ganhos', methods=['GET', 'POST'])
 def aumente_seus_ganhos():
-    return render_template('aumente_seus_ganhos.html')
-
-@app.route('/mapa_com_filtros', methods=['GET', 'POST'])
-def mapa_com_filtros():
     # Carregar dados
     df = carregar_dados_MongoDB(MONGO_URI, DATABASE_NAME, COLLECTION_NAME)
 
@@ -93,10 +89,7 @@ def mapa_com_filtros():
                 icon=folium.Icon(icon='circle', color=row['Cor'])
             ).add_to(mapa)
 
-    # Salvar o mapa em um arquivo HTML
-    mapa.save('static/mapa_com_filtros.html')
-
-    return render_template('mapa_com_filtros.html', mapa_path='mapa_com_filtros.html')
+    return render_template('aumente_seus_ganhos.html', mapa=mapa._repr_html_())
 
 ############## Testar com os dados resultantes de web-scraper-uber-trips ##################################################
 @app.route('/colabore', methods=['GET', 'POST'])
@@ -131,7 +124,6 @@ def colabore():
             return "Formato de arquivo não suportado. Por favor, envie um arquivo CSV.", 400
 
     return render_template('colabore.html')
-
 
 
 @app.route('/static/<path:filename>')

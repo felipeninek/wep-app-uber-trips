@@ -3,33 +3,75 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aumente seus Ganhos</title>
+    <title>Aumente seus ganhos!</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
     <header>
         <nav>
             <ul>
-                <li><a href="{{ url_for('index') }}" class="black">Início</a></li>
-                <li><a href="{{ url_for('colabore') }}" class="black">Colaborar</a></li>
-                <li><a href="{{ url_for('mapa_com_filtros') }}" class="black">Mapa com Filtros</a></li>
-                <li><a href="{{ url_for('aumente_seus_ganhos') }}" class="black">Aumente seus ganhos!</a></li>
+                <li><a href="{{ url_for('index') }}">Início</a></li>
+                <li><a href="{{ url_for('colabore') }}">Colaborar</a></li>
+                <li><a href="{{ url_for('aumente_seus_ganhos') }}">Aumente seus ganhos!</a></li>
             </ul>
+            <div class="accessibility-controls">
+                <button id="increase-text" title="Aumentar texto">
+                    <i class="fas fa-search-plus"></i>
+                </button>
+                <button id="decrease-text" title="Diminuir texto">
+                    <i class="fas fa-search-minus"></i>
+                </button>
+                <button id="reset-text" title="Resetar texto">
+                    <i class="fas fa-undo-alt"></i>
+                </button>
+            </div>
         </nav>
     </header>
 
-    <div class="aumente-seus-ganhos">
-        <h1>Aumente seus Ganhos!</h1>
-        <p>Utilize os filtros abaixo para personalizar os dados exibidos no mapa:</p>
+    <div class="colabore">
+        <h1>Aumente seus Ganhos</h1>
+        <p>Use os filtros abaixo para visualizar dados no mapa e identificar áreas de maior potencial para aumentar seus ganhos.</p>
 
-        <!-- Adicionar o componente Streamlit aqui -->
-        <iframe src="http://localhost:8501" width="100%" height="600" frameborder="0"></iframe>
+        <form action="{{ url_for('aumente_seus_ganhos') }}" method="get" class="filtros">
+            <label for="hora_inicio">Hora de Início:</label>
+            <input type="time" id="hora_inicio" name="hora_inicio" value="23:00:00">
+
+            <label for="hora_fim">Hora de Fim:</label>
+            <input type="time" id="hora_fim" name="hora_fim" value="23:59:59">
+
+            <label for="dia_semana">Dia da Semana:</label>
+            <select id="dia_semana" name="dia_semana">
+                <option value="">Todos</option>
+                <option value="Segunda-feira">Segunda-feira</option>
+                <option value="Terça-feira">Terça-feira</option>
+                <option value="Quarta-feira">Quarta-feira</option>
+                <option value="Quinta-feira">Quinta-feira</option>
+                <option value="Sexta-feira">Sexta-feira</option>
+                <option value="Sábado">Sábado</option>
+                <option value="Domingo">Domingo</option>
+            </select>
+
+            <label for="semana_mes">Semana do Mês:</label>
+            <input type="number" id="semana_mes" name="semana_mes" min="1" max="5">
+
+            <label for="mes_ano">Mês do Ano:</label>
+            <input type="number" id="mes_ano" name="mes_ano" min="1" max="12">
+
+            <input type="submit" class="black" value="Aplicar Filtros">
+        </form>
+
+        <h2>Mapa Interativo</h2>
+        <div id="mapa-container">
+            <div id="mapa" style="height: 50%; width: 80%; max-height: 500px;">
+                {{ mapa | safe }}
+            </div>
+        </div>     
 
         <a href="{{ url_for('index') }}" class="black">Voltar para Home</a>
     </div>
 
-    <footer>
-        <p>&copy; 2024 Projeto Uber. Todos os direitos reservados.</p>
-    </footer>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
 </body>
 </html>
