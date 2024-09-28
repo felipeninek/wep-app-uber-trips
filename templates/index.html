@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>Bem-vindo</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
@@ -29,10 +29,12 @@
     </header>
 
     <div class="presentation">
-        <h1>Bem-vindo ao Projeto Uber</h1>
-        <img src="{{ url_for('static', filename='motorista.jpg') }}" alt="Imagem de Apresentação">
-        <p>Este projeto visualiza dados de viagens usando um mapa interativo. Acesse a seção 'Mapa com Filtros' para aplicar filtros e explorar os dados.</p>
+        <div class="presentation">
+            <h1>Bem-vindo ao Radar Driver</h1>
+            <img src="{{ url_for('static', filename='motorista.jpg') }}" alt="Imagem de Apresentação">
+            <p class="presentation-text">O projeto <strong>Radar Driver</strong> tem como objetivo ajudar os motoristas a melhorar seus ganhos e diminuir custos, proporcionando mais qualidade de vida e trabalho. Trabalhamos em um formato colaborativo, onde os motoristas podem acessar a plataforma e baixar nosso robô para extrair os dados de suas corridas.</p>
+            <p class="presentation-text">Os arquivos gerados pelo nosso robô ficam disponíveis para você analisar e compartilhar conosco! Assim, disponibilizamos um espaço para pesquisas e visualização dos dados fornecidos pelos motoristas. Os dados utilizados nos gráficos são reais e suas informações não são armazenadas, pode ficar tranquilo!</p>
+        </div>
     </div>
-
 </body>
 </html>

@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request, send_from_directory, redirect, url_for
 import pandas as pd
 import folium
-import os
 from pymongo import MongoClient
 from src import bd
 
