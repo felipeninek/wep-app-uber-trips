@@ -2,14 +2,14 @@ from flask import Flask, render_template, request, send_from_directory, redirect
 import pandas as pd
 import folium
 from pymongo import MongoClient
-from src import bd, secret
+from src import bd
 
 app = Flask(__name__)
 
 # Configuração do MongoDB
-MONGO_URI = secret.MONGO_URI
-DATABASE_NAME = secret.DATABASE_NAME
-COLLECTION_NAME = secret.COLLECTION_NAME
+MONGO_URI = 'mongodb+srv://felipeninek:22082008@clusteraprendizado.r962dp8.mongodb.net/'
+DATABASE_NAME = 'uber'
+COLLECTION_NAME = 'viagens'
 
 client = MongoClient(MONGO_URI)
 db = client[DATABASE_NAME]
