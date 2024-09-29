@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, send_from_directory, redirect, url_for
+import os
 import pandas as pd
 import folium
 from pymongo import MongoClient
@@ -7,7 +8,7 @@ from src import bd
 app = Flask(__name__)
 
 # Configuração do MongoDB
-MONGO_URI = 'mongodb+srv://felipeninek:22082008@clusteraprendizado.r962dp8.mongodb.net/'
+MONGO_URI = os.getenv('MONGO_URI')
 DATABASE_NAME = 'uber'
 COLLECTION_NAME = 'viagens'
 
